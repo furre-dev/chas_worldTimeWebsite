@@ -1,4 +1,5 @@
 import Clock from "./Clock";
+import Home from "./Home";
 
 function App() {
   return (
