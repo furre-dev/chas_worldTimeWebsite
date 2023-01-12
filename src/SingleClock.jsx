@@ -8,7 +8,13 @@ export default function SingleClock() {
     const { cityKey } = useParams();
     const { city, timeZone, country } = timeZones[cityKey];
 
+    function timeInterval() {
+        const date = new Date();
+        setTime(date.toLocaleTimeString("sv-SE", { timeZone }));
+    }
+
     useEffect(() => {
+        timeInterval();
         setInterval(() => {
             const date = new Date();
             setTime(date.toLocaleTimeString("sv-SE", { timeZone }));
@@ -16,8 +22,8 @@ export default function SingleClock() {
     }, []);
 
     return (
-        <main className="flex items-center justify-center mt-32">
-            <div className="flex flex-col justify-center items-center bg-blue-600 p-10 rounded-2xl space-y-5">
+        <main className="flex items-center justify-center h-screen">
+            <div className="flex flex-col justify-center items-center bg-blue-800 p-10 max-w-full rounded-2xl space-y-5">
                 <div className="text-3xl text-white">{country}</div>
                 <div className="text-9xl text-white">{city}</div>
                 <div className="text-7xl text-white font-semibold font-mono">
